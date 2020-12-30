@@ -3,7 +3,7 @@ package com.inet.mockito.mockito;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SomeBusinessImpl {
+public class SomeBusinessImpl implements SomeBusiness{
 
 
 	private DataService dataService;
@@ -17,7 +17,8 @@ public class SomeBusinessImpl {
 
 
 
-	int findTheGreatestFromAllData(){
+	@Override
+	public int findTheGreatestFromAllData(){
 		int[] data= dataService.retrieveAllData();
 		int greatest =Integer.MIN_VALUE;
 		//System.out.println("Min : "+greatest);
@@ -30,7 +31,8 @@ public class SomeBusinessImpl {
 		return greatest;
 	}
 
-	void save (String name ){
+	@Override
+	public void save(String name){
 		dataService.save(name);
 	}
 }
